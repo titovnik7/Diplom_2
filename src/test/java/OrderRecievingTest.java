@@ -38,7 +38,7 @@ public class OrderRecievingTest {
         int statusCodeGetUserOrders = getUserOrders.extract().statusCode();
         boolean success = getUserOrders.extract().path("success");
         assertTrue(success);
-        assertEquals(ErrorText.getUserOrderWithAuthorizationStatusCode(), statusCodeGetUserOrders);
+        assertEquals(ErrorText.USER_ORDER_WITH_AUTHORIZATION_STATUS_CODE, statusCodeGetUserOrders);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class OrderRecievingTest {
         ValidatableResponse getUserOrders = orderClient.getForUser(clientBearerToken);
         int statusCodeGetUserOrders = getUserOrders.extract().statusCode();
         String textMessage = getUserOrders.extract().path("message");
-        assertEquals(ErrorText.getUserOrderWithoutAuthorizationStatusCode(), statusCodeGetUserOrders);
-        assertEquals(ErrorText.getUserOrderWithoutAuthorizationTextMessage(), textMessage);
+        assertEquals(ErrorText.USER_ORDER_WITHOUT_AUTHORIZATION_STATUS_CODE, statusCodeGetUserOrders);
+        assertEquals(ErrorText.USER_ORDER_WITHOUT_AUTHORIZATION_TEXT_MESSAGE, textMessage);
     }
 }

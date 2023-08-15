@@ -34,7 +34,7 @@ public class NoParamUserCreate {
         int statusCodeCreateUser = createResponse.extract().statusCode();
         boolean successCreate = createResponse.extract().path("success");
         assertEquals(successCreate, true);
-        assertEquals(ErrorText.getSuccessCreateUserStatusCode(), statusCodeCreateUser);
+        assertEquals(ErrorText.SUCCESS_CREATE_USER_STATUS_CODE, statusCodeCreateUser);
     }
 
     @Test
@@ -44,7 +44,7 @@ public class NoParamUserCreate {
         ValidatableResponse createResponse = userClient.create(user);
         int statusCodeDuplicateCreateUser = createResponse.extract().statusCode();
         String textMessage = createResponse.extract().path("message");
-        assertEquals(ErrorText.getDuplicateCreateUserStatusCode(), statusCodeDuplicateCreateUser);
-        assertEquals(ErrorText.getDuplicateCreateUserTextMessage(), textMessage);
+        assertEquals(ErrorText.DUPLICATE_CREATE_USER_STATUS_CODE, statusCodeDuplicateCreateUser);
+        assertEquals(ErrorText.DUPLICATE_CREATE_USER_TEXT_MESSAGE, textMessage);
     }
 }

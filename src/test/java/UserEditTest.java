@@ -40,7 +40,7 @@ public class UserEditTest {
         int changeStatusCode = changeResponse.extract().statusCode();
         boolean success = changeResponse.extract().path("success");
         assertTrue(success);
-        assertEquals(ErrorText.getSuccessChangeUserStatusCode(), changeStatusCode);
+        assertEquals(ErrorText.SUCCESS_CHANGE_USER_STATUS_CODE, changeStatusCode);
     }
 
     @Test
@@ -50,9 +50,9 @@ public class UserEditTest {
         ValidatableResponse changeResponse = userClient.change(credentials, clientBearerToken);
         int unsuccessfulChangeStatusCode = changeResponse.extract().statusCode();
         String unsuccessfulChangeTextMessage = changeResponse.extract().path("message");
-        assertEquals(ErrorText.getUnsuccessfulChangeWithoutAuthorizationStatusCode(),
+        assertEquals(ErrorText.UNSUCCESSFUL_CHANGE_WITHOUT_AUTHORIZATION_STATUS_CODE,
                 unsuccessfulChangeStatusCode);
-        assertEquals(ErrorText.getUnsuccessfulChangeWithoutAuthorizationTextMessage(),
+        assertEquals(ErrorText.UNSUCCESSFUL_CHANGE_WITHOUT_AUTHORIZATION_TEXT_MESSAGE,
                 unsuccessfulChangeTextMessage);
 
     }

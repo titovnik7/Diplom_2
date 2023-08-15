@@ -36,7 +36,7 @@ public class ParamUserCreateTest {
         ValidatableResponse createResponse = userClient.create(userParam);
         int actualStatusCode = createResponse.extract().statusCode();
         String actualTextError = createResponse.extract().path("message");
-        assertEquals(ErrorText.getRegistratedWithoutRequiredFieldStatusCode(), actualStatusCode);
-        assertEquals(ErrorText.getRegistratedWithoutRequiredFieldTextMessage(), actualTextError);
+        assertEquals(ErrorText.REGISTRATED_WITHOUT_REQUIRED_FIELD_STATUS_CODE, actualStatusCode);
+        assertEquals(ErrorText.REGISTRATED_WITHOUT_REQUIRED_FIELD_TEXT_MESSAGE, actualTextError);
     }
 }

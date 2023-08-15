@@ -38,7 +38,7 @@ public class UserLoginTest {
         int statusCodeSuccessLogin = responseLogin.extract().statusCode();
         boolean textMessage = responseLogin.extract().path("success");
         assertTrue(textMessage);
-        assertEquals(ErrorText.getSuccessLoginStatusCode(), statusCodeSuccessLogin);
+        assertEquals(ErrorText.SUCCESS_LOGIN_STATUS_CODE, statusCodeSuccessLogin);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class UserLoginTest {
         ValidatableResponse responseLogin = userClient.login(UserCredentials.from(user), clientBearerToken);
         int statusCodeUnsuccessfulLogin = responseLogin.extract().statusCode();
         String textMessageError = responseLogin.extract().path("message");
-        assertEquals(ErrorText.getEmailOrPasswordAreIncorrectStatusCode(), statusCodeUnsuccessfulLogin);
-        assertEquals(ErrorText.getEmailOrPasswordAreIncorrectTextMessage(), textMessageError);
+        assertEquals(ErrorText.EMAIL_OR_PASSWORD_ARE_INCORRECT_STATUS_CODE, statusCodeUnsuccessfulLogin);
+        assertEquals(ErrorText.EMAIL_OR_PASSWORD_ARE_INCORRECT_TEXT_MESSAGE, textMessageError);
     }
 }

@@ -46,8 +46,8 @@ public class OrderCreateTest {
         ValidatableResponse createOrderResponse = orderClient.create(ingredientsForOrder, clientBearerToken);
         int statusCodeCreateOrder = createOrderResponse.extract().statusCode();
         boolean success = createOrderResponse.extract().path("success");
+        assertEquals(ErrorText.SUCCESS_CREATE_ORDER_STATUS_CODE, statusCodeCreateOrder);
         assertTrue(success);
-        assertEquals(ErrorText.getSuccessCreateOrderStatusCode(), statusCodeCreateOrder);
     }
 
     @Test
@@ -61,7 +61,7 @@ public class OrderCreateTest {
         int statusCodeCreateOrder = createOrderResponse.extract().statusCode();
         boolean success = createOrderResponse.extract().path("success");
         assertTrue(success);
-        assertEquals(ErrorText.getSuccessCreateOrderStatusCode(), statusCodeCreateOrder);
+        assertEquals(ErrorText.SUCCESS_CREATE_ORDER_STATUS_CODE, statusCodeCreateOrder);
     }
 
     @Test
@@ -72,8 +72,8 @@ public class OrderCreateTest {
         ValidatableResponse createOrderResponse = orderClient.create(ingredientsForOrder, token);
         int statusCodeCreateOrder = createOrderResponse.extract().statusCode();
         String textMessage = createOrderResponse.extract().path("message");
-        assertEquals(ErrorText.getCreateOrderWithoutIngredientStatusCode(), statusCodeCreateOrder);
-        assertEquals(ErrorText.getCreateOrderWithoutIngredientTextMessage(), textMessage);
+        assertEquals(ErrorText.CREATE_ORDER_WITHOUT_INGREDIENT_STATUS_CODE, statusCodeCreateOrder);
+        assertEquals(ErrorText.CREATE_ORDER_WITHOUT_INGREDIENT_TEXT_MESSAGE, textMessage);
     }
 
     @Test
@@ -84,7 +84,7 @@ public class OrderCreateTest {
         ValidatableResponse createOrderResponse = orderClient.create(ingredientsForOrder, token);
         int statusCodeCreateOrder = createOrderResponse.extract().statusCode();
         String textMessage = createOrderResponse.extract().path("message");
-        assertEquals(ErrorText.getCreateOrderWithIncorrectHashStatusCode(), statusCodeCreateOrder);
-        assertEquals(ErrorText.getCreateOrderWithIncorrectHashTextMessage(), textMessage);
+        assertEquals(ErrorText.CREATE_ORDER_WITH_INCORRECT_HASH_STATUS_CODE, statusCodeCreateOrder);
+        assertEquals(ErrorText.CREATE_ORDER_WITH_INCORRECT_HASH_TEXT_MESSAGE, textMessage);
     }
 }
